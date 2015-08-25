@@ -106,6 +106,8 @@ cdef class Device (_DeviceHolder):
 
     def __init__(self, filename):
         super(Device, self).__init__()
+        if not isinstance(filename, bytes):
+            filename = filename.encode()
         self.filename = filename
 
     def open(self):
