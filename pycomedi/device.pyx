@@ -114,7 +114,7 @@ cdef class Device (_DeviceHolder):
         if self.device == NULL:
             _error.raise_error(function_name='comedi_open',
                                error_msg=self.filename)
-        self.file = _os.fdopen(self.fileno(), 'rb+')
+        self.file = _os.fdopen(self.fileno(), 'rb+', buffering=0)
 
     def close(self):
         "Close device"
